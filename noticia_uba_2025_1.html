@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RN PORTAL DE NOTICIAS - Ubá Lança Novo Polo Tecnológico com Foco em Inovação e Empregos</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f4f6f8; color: #333; line-height: 1.6; }
+        .top-bar { background-color: #fff; padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #555; border-bottom: 1px solid #e0e0e0; }
+        .top-bar .date-time, .top-bar .contact-info, .top-bar .weather { display: flex; align-items: center; } .top-bar .icon { margin-right: 8px; font-size: 14px; } .top-bar .social-media a { color: #555; margin-left: 10px; text-decoration: none; font-size: 14px; } .top-bar .social-media a:hover { color: #007bff; }
+        header { background-color: #fff; padding: 20px; display: flex; flex-direction: column; align-items: center; border-bottom: 3px solid #0056b3; }
+        .header-top-content { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin-bottom: 15px; }
+        .logo { font-weight: bold; font-size: 32px; color: #0056b3; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+        .search-and-secondary { display: flex; align-items: center; gap: 20px; } .search-bar { display: flex; } .search-bar input[type="text"] { padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; font-size: 14px; width: 250px; } .search-bar button { padding: 8px 15px; background-color: #007bff; color: white; border: 1px solid #007bff; border-left: none; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 14px; } .search-bar button:hover { background-color: #0056b3; } .header-secondary-info { text-align: right; font-size: 13px; color: #444; } .header-secondary-info .icon { margin-right: 5px; }
+        .main-nav { width: 100%; background-color: #007bff; display: flex; justify-content: center; } .main-nav nav a { color: white; text-decoration: none; padding: 12px 18px; font-size: 15px; font-weight: 500; transition: background-color 0.3s; text-transform: uppercase; } .main-nav nav a:hover { background-color: #0056b3; }
+        .news-ticker { background-color: #f8f9fa; padding: 10px 20px; font-size: 14px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; } .news-ticker .ticker-label { background-color: #007bff; color: white; padding: 5px 10px; font-weight: bold; margin-right: 15px; border-radius: 3px; } .news-ticker .ticker-content a { color: #333; text-decoration: none; margin-right: 20px; } .news-ticker .ticker-content a:hover { text-decoration: underline; }
+        .container { display: flex; max-width: 1200px; margin: 25px auto; padding: 0 20px; gap: 30px; }
+        .content-area { flex: 3; background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .sidebar { flex: 1; display: flex; flex-direction: column; gap: 25px; } .sidebar-widget { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); } .sidebar-widget .widget-title { font-size: 18px; color: #0056b3; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid #eee; font-weight: 600; } .sidebar-widget ul { list-style: none; padding: 0; margin: 0; } .sidebar-widget ul li { margin-bottom: 12px; } .sidebar-widget ul li a { color: #333; text-decoration: none; font-size: 14px; } .sidebar-widget ul li a:hover { color: #007bff; text-decoration: underline; } .ad-unit-sidebar img { max-width: 100%; height: auto; border-radius: 4px; }
+        .breadcrumbs { font-size: 12px; color: #666; margin-bottom: 15px; text-transform: uppercase; }
+        .article-header h1 { font-size: 36px; color: #212529; margin-bottom: 10px; line-height: 1.3; }
+        .article-header .subtitle { font-size: 18px; color: #495057; margin-bottom: 20px; font-style: italic; }
+        .article-metadata { font-size: 13px; color: #6c757d; border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 25px; }
+        .main-article-image { width: 100%; max-height: 450px; object-fit: cover; border-radius: 5px; margin-bottom: 20px; }
+        .article-body p { margin-bottom: 1.5em; text-align: justify; font-size: 16px; } .article-body blockquote { background-color: #f8f9fa; border-left: 4px solid #007bff; margin: 25px 0; padding: 15px 20px; font-style: italic; color: #495057; font-size: 17px; }
+        .related-articles-section .section-title { font-size: 22px; color: #0056b3; margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #007bff; font-weight: 600; }
+        .related-articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .related-card { background-color: #fff; border: 1px solid #e0e0e0; border-radius: 5px; overflow: hidden; transition: box-shadow 0.3s; } .related-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); } .related-card .thumb { width: 100%; height: 150px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #6c757d; } .related-card .thumb img { width: 100%; height: 100%; object-fit: cover; } .related-card .card-content { padding: 15px; } .related-card h3 { font-size: 16px; margin: 0 0 8px 0; line-height: 1.3; } .related-card h3 a { color: #333; text-decoration: none; } .related-card h3 a:hover { color: #0056b3; } .related-card p { font-size: 13px; color: #777; margin: 0; }
+        .footer { text-align: center; padding: 30px; margin-top: 40px; background-color: #343a40; color: #f8f9fa; font-size: 14px; } .footer p { margin: 5px 0; } .footer a { color: #00aaff; text-decoration: none; } .footer a:hover { text-decoration: underline; }
+        @media (max-width: 992px) { .container { flex-direction: column; } .header-top-content { flex-direction: column; gap: 15px; } .search-and-secondary { width: 100%; justify-content: space-between; } .search-bar input[type="text"] { width: 60%; } }
+        @media (max-width: 768px) { .main-nav nav { flex-direction: column; align-items: center; } .main-nav nav a { padding: 10px; width: 100%; text-align: center; border-bottom: 1px solid #0056b3; } .main-nav nav a:last-child { border-bottom: none; } .news-ticker { flex-direction: column; align-items: flex-start; } .news-ticker .ticker-label { margin-bottom: 5px; } .top-bar { flex-direction: column; gap: 5px; align-items: flex-start; } .article-header h1 {font-size: 28px;} }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="date-time"><span class="icon">📅</span> <span id="current-date">Segunda, 26 de Maio de 2025</span></div>
+        <div class="social-media">
+            <a href="#" title="Facebook"><img src="https://img.icons8.com/ios-filled/16/000000/facebook-new.png" alt="Facebook"/> Facebook</a>
+            <a href="#" title="Twitter"><img src="https://img.icons8.com/ios-filled/16/000000/twitter.png" alt="Twitter"/> Twitter</a>
+            <a href="#" title="Instagram"><img src="https://img.icons8.com/ios-filled/16/000000/instagram-new.png" alt="Instagram"/> Instagram</a>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-top-content">
+            <a href="index.html" style="text-decoration: none;"><h1 class="logo">RN PORTAL DE NOTICIAS</h1></a>
+            <div class="search-and-secondary">
+                <form class="search-bar" action="#" method="GET" onsubmit="alert('Funcionalidade de busca em desenvolvimento!'); return false;">
+                    <input type="text" name="q" placeholder="Buscar notícias...">
+                    <button type="submit">Buscar</button>
+                </form>
+                <div class="header-secondary-info">
+                    <div><span class="icon">📞</span> 32-35327272</div>
+                    <div><span class="icon">☀️</span> 17° Tempo limpo, Ubá, MG</div>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav">
+            <nav>
+                <a href="index.html">Últimas Notícias</a><a href="#">Editorias</a><a href="#">Municípios</a><a href="#">Blogs & Colunas</a><a href="#">Vídeos</a><a href="#">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="content-area">
+            <div class="breadcrumbs">ECONOMIA > DESENVOLVIMENTO LOCAL</div>
+            <article>
+                <header class="article-header">
+                    <h1>Ubá Lança Novo Polo Tecnológico com Foco em Inovação e Empregos</h1>
+                    <p class="subtitle">Iniciativa visa atrair empresas de tecnologia e qualificar mão de obra local, prometendo impulsionar a economia regional em 2025.</p>
+                    <div class="article-metadata">
+                        <p>Por Redação RN | Publicado em: 25 de Maio de 2025, 10:30</p>
+                    </div>
+                </header>
+
+                <img src="imagens/moveis.jpg" alt="Inauguração do Polo Tecnológico de Ubá" class="main-article-image">
+
+                <section class="article-body">
+                    <p><b>UBÁ, MG</b> — Em um marco para o desenvolvimento econômico e tecnológico da região, a cidade de Ubá inaugurou oficialmente nesta segunda-feira (25) seu novo Polo Tecnológico. O complexo, que ocupa uma área de 50 mil metros quadrados, foi projetado para ser um hub de inovação, atraindo startups, empresas de base tecnológica e instituições de pesquisa, com o objetivo principal de gerar empregos qualificados e fomentar o empreendedorismo local.</p>
+                    <p>A cerimônia de lançamento contou com a presença de autoridades municipais, estaduais, representantes do setor empresarial e da comunidade acadêmica. O prefeito de Ubá, em seu discurso, destacou que o polo é "um sonho antigo que se torna realidade e que posicionará Ubá como um centro de referência em tecnologia na Zona da Mata Mineira e além."</p>
+                    <p>O Polo Tecnológico de Ubá oferecerá infraestrutura moderna, incluindo espaços de coworking, laboratórios compartilhados, incubadora de empresas, auditório para eventos e programas de aceleração. Já nas primeiras semanas de operação, mais de 15 empresas manifestaram interesse em se instalar no local, abrangendo setores como desenvolvimento de software, agrotech, inteligência artificial e energias renováveis.</p>
+                    <blockquote>"Este é um passo fundamental para diversificar nossa economia e reter talentos em nossa cidade. Queremos criar um ecossistema vibrante onde a inovação floresça e gere oportunidades reais para nossos jovens," afirmou a secretária de Desenvolvimento Econômico do município.</blockquote>
+                    <p>Além da atração de empresas, o polo terá um forte componente educacional, com parcerias já firmadas com universidades e escolas técnicas da região para oferecer cursos de capacitação e programas de estágio. A expectativa é que, nos primeiros cinco anos, o polo gere mais de 500 empregos diretos e contribua significativamente para o aumento da arrecadação municipal.</p>
+                    <p>Investidores e empreendedores locais veem a iniciativa com otimismo, acreditando que o Polo Tecnológico trará um novo dinamismo para Ubá, impulsionando não apenas o setor de tecnologia, mas também serviços correlatos e o mercado imobiliário. O projeto é visto como um legado para as futuras gerações, consolidando Ubá como uma cidade que investe em conhecimento e inovação.</p>
+                </section>
+            </article>
+
+            <section class="related-articles-section">
+                <h2 class="section-title">Veja Também</h2>
+                <div class="related-articles-grid">
+                    <article class="related-card">
+                        <a href="noticia_regional_2025_1.html">
+                            <div class="thumb"><img src="imagens/festival_vrb_2025.jpg" alt="Festival"></div>
+                            <div class="card-content">
+                                <h3>Festival Gastronômico da Zona da Mata é Sucesso Absoluto</h3>
+                                <p>Evento em Visconde do Rio Branco atrai milhares de visitantes.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="related-card">
+                        <a href="noticia_uba_2025_2.html">
+                            <div class="thumb"><img src="imagens/esporte_uba_2025_thumb.jpg" alt="Esporte"></div>
+                            <div class="card-content">
+                                <h3>Time de Ubá Celebra Conquista Inédita no Futebol Mineiro</h3>
+                                <p>Vitória histórica para o esporte ubaense em 2025.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="related-card">
+                        <a href="noticia_regional_2025_2.html">
+                            <div class="thumb"><img src="imagens/lixo.jpg" alt="Reciclagem"></div>
+                            <div class="card-content">
+                                <h3>Cataguases Inova com Novo Sistema de Coleta Seletiva</h3>
+                                <p>Iniciativa visa aumentar a reciclagem na região.</p>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-widget ad-unit-sidebar">
+                <h3 class="widget-title">PUBLICIDADE</h3>
+                <img src="imagens/anuncio_banner.png" alt="Anúncio Invista em Ubá">
+            </div>
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Últimas de Economia</h3>
+                <ul>
+                    <li><a href="#">Agronegócio em Minas prevê safra recorde para 2025.</a></li>
+                    <li><a href="#">Novas linhas de crédito para microempreendedores são anunciadas.</a></li>
+                    <li><a href="#">Setor de serviços em Ubá registra crescimento no primeiro trimestre.</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <p>© <span id="current-year">2025</span> RN PORTAL DE NOTICIAS. Todos os direitos reservados.</p>
+        <p>Ubá - Minas Gerais | Contato: (32) 3532-7272 | email@rnportal.com.br</p>
+        <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+    </footer>
+
+    <script>
+        function setCurrentDate() {
+            const dateElement = document.getElementById('current-date');
+            const yearElement = document.getElementById('current-year');
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const displayDate = new Date(2025, now.getMonth(), now.getDate()); // Força ano para 2025
+            if (dateElement) dateElement.textContent = displayDate.toLocaleDateString('pt-BR', options);
+            if (yearElement) yearElement.textContent = '2025';
+        }
+        setCurrentDate();
+    </script>
+</body>
+</html>

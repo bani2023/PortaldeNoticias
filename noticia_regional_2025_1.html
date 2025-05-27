@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RN PORTAL DE NOTICIAS - Festival Gastronômico da Zona da Mata Quebra Recorde de Público em 2025</title>
+    <style>
+        /* [COLE O MESMO CSS DA PÁGINA ANTERIOR AQUI] */
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f4f6f8; color: #333; line-height: 1.6; }
+        .top-bar { background-color: #fff; padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #555; border-bottom: 1px solid #e0e0e0; }
+        .top-bar .date-time, .top-bar .contact-info, .top-bar .weather { display: flex; align-items: center; } .top-bar .icon { margin-right: 8px; font-size: 14px; } .top-bar .social-media a { color: #555; margin-left: 10px; text-decoration: none; font-size: 14px; } .top-bar .social-media a:hover { color: #007bff; }
+        header { background-color: #fff; padding: 20px; display: flex; flex-direction: column; align-items: center; border-bottom: 3px solid #0056b3; }
+        .header-top-content { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin-bottom: 15px; }
+        .logo { font-weight: bold; font-size: 32px; color: #0056b3; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+        .search-and-secondary { display: flex; align-items: center; gap: 20px; } .search-bar { display: flex; } .search-bar input[type="text"] { padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; font-size: 14px; width: 250px; } .search-bar button { padding: 8px 15px; background-color: #007bff; color: white; border: 1px solid #007bff; border-left: none; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 14px; } .search-bar button:hover { background-color: #0056b3; } .header-secondary-info { text-align: right; font-size: 13px; color: #444; } .header-secondary-info .icon { margin-right: 5px; }
+        .main-nav { width: 100%; background-color: #007bff; display: flex; justify-content: center; } .main-nav nav a { color: white; text-decoration: none; padding: 12px 18px; font-size: 15px; font-weight: 500; transition: background-color 0.3s; text-transform: uppercase; } .main-nav nav a:hover { background-color: #0056b3; }
+        .news-ticker { background-color: #f8f9fa; padding: 10px 20px; font-size: 14px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; } .news-ticker .ticker-label { background-color: #007bff; color: white; padding: 5px 10px; font-weight: bold; margin-right: 15px; border-radius: 3px; } .news-ticker .ticker-content a { color: #333; text-decoration: none; margin-right: 20px; } .news-ticker .ticker-content a:hover { text-decoration: underline; }
+        .container { display: flex; max-width: 1200px; margin: 25px auto; padding: 0 20px; gap: 30px; }
+        .content-area { flex: 3; background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .sidebar { flex: 1; display: flex; flex-direction: column; gap: 25px; } .sidebar-widget { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); } .sidebar-widget .widget-title { font-size: 18px; color: #0056b3; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid #eee; font-weight: 600; } .sidebar-widget ul { list-style: none; padding: 0; margin: 0; } .sidebar-widget ul li { margin-bottom: 12px; } .sidebar-widget ul li a { color: #333; text-decoration: none; font-size: 14px; } .sidebar-widget ul li a:hover { color: #007bff; text-decoration: underline; } .ad-unit-sidebar img { max-width: 100%; height: auto; border-radius: 4px; }
+        .breadcrumbs { font-size: 12px; color: #666; margin-bottom: 15px; text-transform: uppercase; }
+        .article-header h1 { font-size: 36px; color: #212529; margin-bottom: 10px; line-height: 1.3; }
+        .article-header .subtitle { font-size: 18px; color: #495057; margin-bottom: 20px; font-style: italic; }
+        .article-metadata { font-size: 13px; color: #6c757d; border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 25px; }
+        .main-article-image { width: 100%; max-height: 450px; object-fit: cover; border-radius: 5px; margin-bottom: 20px; }
+        .article-body p { margin-bottom: 1.5em; text-align: justify; font-size: 16px; } .article-body blockquote { background-color: #f8f9fa; border-left: 4px solid #007bff; margin: 25px 0; padding: 15px 20px; font-style: italic; color: #495057; font-size: 17px; }
+        .related-articles-section .section-title { font-size: 22px; color: #0056b3; margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #007bff; font-weight: 600; }
+        .related-articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .related-card { background-color: #fff; border: 1px solid #e0e0e0; border-radius: 5px; overflow: hidden; transition: box-shadow 0.3s; } .related-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); } .related-card .thumb { width: 100%; height: 150px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #6c757d; } .related-card .thumb img { width: 100%; height: 100%; object-fit: cover; } .related-card .card-content { padding: 15px; } .related-card h3 { font-size: 16px; margin: 0 0 8px 0; line-height: 1.3; } .related-card h3 a { color: #333; text-decoration: none; } .related-card h3 a:hover { color: #0056b3; } .related-card p { font-size: 13px; color: #777; margin: 0; }
+        .footer { text-align: center; padding: 30px; margin-top: 40px; background-color: #343a40; color: #f8f9fa; font-size: 14px; } .footer p { margin: 5px 0; } .footer a { color: #00aaff; text-decoration: none; } .footer a:hover { text-decoration: underline; }
+        @media (max-width: 992px) { .container { flex-direction: column; } .header-top-content { flex-direction: column; gap: 15px; } .search-and-secondary { width: 100%; justify-content: space-between; } .search-bar input[type="text"] { width: 60%; } }
+        @media (max-width: 768px) { .main-nav nav { flex-direction: column; align-items: center; } .main-nav nav a { padding: 10px; width: 100%; text-align: center; border-bottom: 1px solid #0056b3; } .main-nav nav a:last-child { border-bottom: none; } .news-ticker { flex-direction: column; align-items: flex-start; } .news-ticker .ticker-label { margin-bottom: 5px; } .top-bar { flex-direction: column; gap: 5px; align-items: flex-start; } .article-header h1 {font-size: 28px;} }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="date-time"><span class="icon">📅</span> <span id="current-date">Segunda, 26 de Maio de 2025</span></div>
+        <div class="social-media">
+            <a href="#" title="Facebook"><img src="https://img.icons8.com/ios-filled/16/000000/facebook-new.png" alt="Facebook"/> Facebook</a>
+            <a href="#" title="Twitter"><img src="https://img.icons8.com/ios-filled/16/000000/twitter.png" alt="Twitter"/> Twitter</a>
+            <a href="#" title="Instagram"><img src="https://img.icons8.com/ios-filled/16/000000/instagram-new.png" alt="Instagram"/> Instagram</a>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-top-content">
+            <a href="index.html" style="text-decoration: none;"><h1 class="logo">RN PORTAL DE NOTICIAS</h1></a>
+            <div class="search-and-secondary">
+                <form class="search-bar" action="#" method="GET" onsubmit="alert('Funcionalidade de busca em desenvolvimento!'); return false;">
+                    <input type="text" name="q" placeholder="Buscar notícias...">
+                    <button type="submit">Buscar</button>
+                </form>
+                <div class="header-secondary-info">
+                    <div><span class="icon">📞</span> 32-35327272</div>
+                    <div><span class="icon">☀️</span> 17° Tempo limpo, Ubá, MG</div>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav">
+            <nav>
+                <a href="index.html">Últimas Notícias</a><a href="#">Editorias</a><a href="#">Municípios</a><a href="#">Blogs & Colunas</a><a href="#">Vídeos</a><a href="#">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="content-area">
+            <div class="breadcrumbs">CULTURA > EVENTOS REGIONAIS</div>
+            <article>
+                <header class="article-header">
+                    <h1>Festival Gastronômico da Zona da Mata Quebra Recorde de Público em 2025</h1>
+                    <p class="subtitle">Evento realizado em Visconde do Rio Branco celebrou a rica culinária local e atraiu milhares de visitantes, impulsionando o turismo e a cultura da região.</p>
+                    <div class="article-metadata">
+                        <p>Por Redação RN | Publicado em: 24 de Maio de 2025, 18:00</p>
+                    </div>
+                </header>
+
+                <img src="imagens/comida.jpg" alt="Festival Gastronômico da Zona da Mata" class="main-article-image">
+
+                <section class="article-body">
+                    <p><b>VISCONDE DO RIO BRANCO, MG</b> — O tradicional Festival Gastronômico da Zona da Mata, realizado neste fim de semana em Visconde do Rio Branco, superou todas as expectativas e quebrou recorde de público em sua edição de 2025. Milhares de pessoas, entre moradores locais e turistas de diversas partes de Minas Gerais e de outros estados, prestigiaram o evento, que celebrou os sabores e tradições da culinária regional.</p>
+                    <p>Durante três dias, a praça central da cidade se transformou em um verdadeiro paraíso para os amantes da boa comida. Mais de 40 expositores, incluindo restaurantes renomados, chefs locais, produtores artesanais e food trucks, ofereceram uma variedade impressionante de pratos, desde a autêntica comida mineira de fogão a lenha até criações contemporâneas com ingredientes regionais.</p>
+                    <p>Além da gastronomia, o festival contou com uma programação cultural diversificada, com shows de música ao vivo, apresentações de dança folclórica, oficinas de culinária para adultos e crianças, e uma feira de artesanato local. A organização do evento estimou que mais de 30 mil pessoas circularam pelo festival, gerando um impacto econômico significativo para a cidade e para os municípios vizinhos.</p>
+                    <blockquote>"Estamos extremamente felizes com o resultado desta edição. O festival não é apenas sobre comida, é sobre celebrar nossa identidade, nossa cultura e promover o encontro de pessoas. Ver a praça lotada e os expositores satisfeitos é a nossa maior recompensa," declarou o secretário de Cultura e Turismo de Visconde do Rio Branco.</blockquote>
+                    <p>O sucesso do festival em 2025 já garantiu sua inclusão definitiva no calendário oficial de eventos do estado, e os organizadores planejam expandir ainda mais a estrutura e as atrações para as próximas edições. O evento se consolida como um dos principais vetores de turismo e desenvolvimento cultural para a Zona da Mata Mineira.</p>
+                </section>
+            </article>
+
+             <section class="related-articles-section">
+                <h2 class="section-title">Veja Também</h2>
+                <div class="related-articles-grid">
+                    <article class="related-card">
+                        <a href="noticia_uba_2025_1.html">
+                            <div class="thumb"><img src="imagens/economia_uba_2025_thumb.jpg"></div>
+                            <div class="card-content">
+                                <h3>Ubá Inaugura Polo Tecnológico com Foco em Inovação</h3>
+                                <p>Iniciativa visa impulsionar a economia e gerar empregos.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="related-card">
+                        <a href="#"> <!-- Link para matéria sobre turismo na região -->
+                            <div class="thumb"><img src="imagens/turismo.jpg" alt="Turismo"></div>
+                            <div class="card-content">
+                                <h3>Descubra os Encantos Turísticos da Zona da Mata Mineira</h3>
+                                <p>Roteiros e dicas para explorar as belezas da região.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="related-card">
+                        <a href="noticia_regional_2025_2.html">
+                            <div class="thumb"><img src="imagens/lixo.jpg" alt="Coleta Seletiva"></div>
+                            <div class="card-content">
+                                <h3>Cataguases Avança com Novo Sistema de Coleta Seletiva</h3>
+                                <p>Projeto visa promover a sustentabilidade na cidade.</p>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+             <div class="sidebar-widget ad-unit-sidebar">
+                <h3 class="widget-title">PUBLICIDADE</h3>
+                <img src="imagens/anuncio_banner.png">
+            </div>
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Eventos na Região</h3>
+                <ul>
+                    <li><a href="#">Feira Agropecuária de Guidoval acontece em Julho.</a></li>
+                    <li><a href="#">Rodeiro prepara 30ª Festa do Cavalo.</a></li>
+                    <li><a href="#">Semana Cultural de Tocantins com shows e exposições.</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <p>© <span id="current-year">2025</span> RN PORTAL DE NOTICIAS. Todos os direitos reservados.</p>
+        <p>Ubá - Minas Gerais | Contato: (32) 3532-7272 | email@rnportal.com.br</p>
+        <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+    </footer>
+
+    <script>
+        function setCurrentDate() {
+            const dateElement = document.getElementById('current-date');
+            const yearElement = document.getElementById('current-year');
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const displayDate = new Date(2025, now.getMonth(), now.getDate()); // Força ano para 2025
+            if (dateElement) dateElement.textContent = displayDate.toLocaleDateString('pt-BR', options);
+            if (yearElement) yearElement.textContent = '2025';
+        }
+        setCurrentDate();
+    </script>
+</body>
+</html>
