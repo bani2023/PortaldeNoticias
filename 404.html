@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RN PORTAL DE NOTICIAS - Últimas Notícias de Ubá e Região</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .top-bar {
+            background-color: #fff;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #555;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .top-bar .date-time, .top-bar .contact-info, .top-bar .weather {
+            display: flex;
+            align-items: center;
+        }
+        .top-bar .icon {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+         .top-bar .social-media a {
+            color: #555;
+            margin-left: 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar .social-media a:hover {
+            color: #007bff;
+        }
+
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Alterado para empilhar logo e nav-search */
+            align-items: center; /* Centraliza o logo */
+            border-bottom: 3px solid #0056b3;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px; /* Limita largura do conteúdo do cabeçalho */
+            margin-bottom: 15px; /* Espaço entre logo/search e nav principal */
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 32px;
+            color: #0056b3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0; /* Removido margin-right */
+        }
+
+        .search-and-secondary {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+            width: 250px; /* Ajuste a largura conforme necessário */
+        }
+
+        .search-bar button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+        
+        .header-secondary-info {
+            text-align: right;
+            font-size: 13px;
+            color: #444;
+        }
+        .header-secondary-info .icon {
+            margin-right: 5px;
+        }
+
+
+        .main-nav { /* Navegação principal abaixo do logo/busca */
+            width: 100%;
+            background-color: #007bff; 
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-nav nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+        }
+
+        .main-nav nav a:hover {
+            background-color: #0056b3;
+        }
+        
+        .news-ticker {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        .news-ticker .ticker-label {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            margin-right: 15px;
+            border-radius: 3px;
+        }
+        .news-ticker .ticker-content a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .news-ticker .ticker-content a:hover {
+            text-decoration: underline;
+        }
+
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 0 20px;
+            gap: 30px;
+        }
+
+        .content-area {
+            flex: 3;
+        }
+        
+        .section-title-main {
+            font-size: 24px;
+            color: #0056b3;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007bff;
+            font-weight: 600;
+        }
+
+        .featured-news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuste para responsividade */
+            gap: 25px;
+        }
+
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease-in-out;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card .thumb {
+            width: 100%;
+            height: 180px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .news-card .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-card .card-content {
+            padding: 18px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card .category-tag {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            align-self: flex-start;
+        }
+        .news-card h3 {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+            line-height: 1.4;
+            color: #333;
+        }
+        .news-card h3 a {
+            color: #333;
+            text-decoration: none;
+        }
+        .news-card h3 a:hover {
+            color: #0056b3;
+        }
+        .news-card .summary {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        .news-card .date {
+            font-size: 12px;
+            color: #777;
+            margin-top: auto; /* Empurra a data para baixo */
+        }
+
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .sidebar-widget {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar-widget .widget-title {
+            font-size: 18px;
+            color: #0056b3;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            font-weight: 600;
+        }
+        .sidebar-widget ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-widget ul li {
+            margin-bottom: 12px;
+        }
+        .sidebar-widget ul li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .sidebar-widget ul li a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+        .ad-unit-sidebar img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            background-color: #343a40;
+            color: #f8f9fa;
+            font-size: 14px;
+        }
+        .footer p { margin: 5px 0; }
+        .footer a { color: #00aaff; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            .header-top-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .search-and-secondary {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .search-bar input[type="text"] {
+                width: 60%; /* Ajuste para telas menores */
+            }
+        }
+        @media (max-width: 768px) {
+            .main-nav nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .main-nav nav a {
+                padding: 10px;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #0056b3;
+            }
+            .main-nav nav a:last-child {
+                border-bottom: none;
+            }
+            .news-ticker {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .news-ticker .ticker-label {
+                margin-bottom: 5px;
+            }
+            .top-bar{
+                flex-direction: column;
+                gap: 5px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="date-time">
+            <span class="icon">📅</span> <span id="current-date">Segunda, 26 de Maio de 2025</span>
+        </div>
+        <div class="social-media">
+            <a href="#" title="Facebook"><img src="https://img.icons8.com/ios-filled/16/000000/facebook-new.png" alt="Facebook"/> Facebook</a>
+            <a href="#" title="Twitter"><img src="https://img.icons8.com/ios-filled/16/000000/twitter.png" alt="Twitter"/> Twitter</a>
+            <a href="#" title="Instagram"><img src="https://img.icons8.com/ios-filled/16/000000/instagram-new.png" alt="Instagram"/> Instagram</a>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-top-content">
+            <h1 class="logo">RN PORTAL DE NOTICIAS</h1>
+            <div class="search-and-secondary">
+                <form class="search-bar" action="#" method="GET" onsubmit="alert('Funcionalidade de busca em desenvolvimento!'); return false;">
+                    <input type="text" name="q" placeholder="Buscar notícias...">
+                    <button type="submit">Buscar</button>
+                </form>
+                <div class="header-secondary-info">
+                    <div><span class="icon">📞</span> 32-35327272</div>
+                    <div><span class="icon">☀️</span> 17° Tempo limpo, Ubá, MG</div>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav">
+            <nav>
+                <a href="index.html">Últimas Notícias</a>
+                <a href="#">Editorias</a>
+                <a href="#">Municípios</a>
+                <a href="#">Blogs & Colunas</a>
+                <a href="#">Vídeos</a>
+                <a href="#">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="news-ticker">
+        <span class="ticker-label">AO VIVO</span>
+        <div class="ticker-content">
+            <a href="#">Prefeitura de Ubá anuncia novo pacote de obras para 2025.</a>
+            <a href="#">Festival de Inverno de Visconde do Rio Branco atrai turistas.</a>
+            <a href="#">Agronegócio na Zona da Mata Mineira bate recorde de produção.</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <main class="content-area">
+            <h2 class="section-title-main">Destaques de Hoje - 2025</h2>
+            <div class="featured-news-grid">
+                <!-- Notícia Destaque 1 - 2025 -->
+                <article class="news-card">
+                    <div class="thumb">
+                        <img src="imagens/economia_uba_2025_thumb.jpg" alt="Desenvolvimento Ubá 2025">
+                    </div>
+                    <div class="card-content">
+                        <span class="category-tag">ECONOMIA</span>
+                        <h3><a href="noticia_uba_2025_1.html">Ubá Lança Novo Polo Tecnológico com Foco em Inovação e Empregos</a></h3>
+                        <p class="summary">Iniciativa visa atrair empresas de tecnologia e qualificar mão de obra local, prometendo impulsionar a economia regional em 2025.</p>
+                        <p class="date">Publicado em: 25 de Maio de 2025</p>
+                    </div>
+                </article>
+
+                <!-- Notícia Destaque 2 - 2025 -->
+                <article class="news-card">
+                    <div class="thumb">
+                         <img src="imagens/festival_vrb_2025.jpg" alt="Cultura Regional 2025">
+                    </div>
+                    <div class="card-content">
+                        <span class="category-tag">CULTURA</span>
+                        <h3><a href="noticia_regional_2025_1.html">Festival Gastronômico da Zona da Mata Quebra Recorde de Público em 2025</a></h3>
+                        <p class="summary">Evento em Visconde do Rio Branco celebrou a culinária local e atraiu milhares de visitantes, movimentando o turismo e a cultura da região.</p>
+                        <p class="date">Publicado em: 24 de Maio de 2025</p>
+                    </div>
+                </article>
+
+                <!-- Notícia Destaque 3 - 2025 -->
+                <article class="news-card">
+                    <div class="thumb">
+                         <img src="imagens/esporte_uba_2025_thumb.jpg" alt="Esporte Ubá 2025">
+                    </div>
+                    <div class="card-content">
+                        <span class="category-tag">ESPORTE</span>
+                        <h3><a href="noticia_uba_2025_2.html">Time de Ubá Conquista Título Inédito no Campeonato Mineiro do Interior</a></h3>
+                        <p class="summary">Após campanha histórica, equipe ubaense de futebol levanta o troféu e garante vaga em competições nacionais para 2026.</p>
+                        <p class="date">Publicado em: 22 de Maio de 2025</p>
+                    </div>
+                </article>
+                
+                <!-- Notícia Destaque 4 - 2025 -->
+                <article class="news-card">
+                    <div class="thumb">
+                         <img src="imagens/meioambiente_uba_2025_thumb.jpg" alt="Meio Ambiente 2025">
+                    </div>
+                    <div class="card-content">
+                        <span class="category-tag">MEIO AMBIENTE</span>
+                        <h3><a href="noticia_regional_2025_2.html">Região de Cataguases Implementa Novo Sistema de Coleta Seletiva e Reciclagem</a></h3>
+                        <p class="summary">Projeto visa aumentar significativamente a taxa de reciclagem e promover a conscientização ambiental entre os moradores.</p>
+                        <p class="date">Publicado em: 20 de Maio de 2025</p>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-widget ad-unit-sidebar">
+                <h3 class="widget-title">PUBLICIDADE</h3>
+                <img src="imagens/anuncio_banner.png" alt="Anúncio RN Notícias">
+            </div>
+
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Mais Lidas - 2025</h3>
+                <ul>
+                    <li><a href="noticia_uba_2025_1.html">Ubá: Novo Polo Tecnológico é inaugurado com grande festa.</a></li>
+                    <li><a href="noticia_regional_2025_1.html">Visconde do Rio Branco: Festival supera expectativas.</a></li>
+                    <li><a href="#">Aymorés celebra 100 anos com programação especial.</a></li>
+                    <li><a href="#">Saúde em Tocantins: Hospital regional recebe novos equipamentos.</a></li>
+                    <li><a href="noticia_uba_2025_2.html">Esporte: Jogadores de Ubá comemoram título histórico.</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Blogs e Colunas</h3>
+                <ul>
+                    <li><a href="#">Análise Política: Os desafios de Minas em 2025 - Por João Analista</a></li>
+                    <li><a href="#">Crônicas da Cidade: O cotidiano ubaense - Por Maria Cronista</a></li>
+                    <li><a href="#">Dicas de Viagem: Roteiros pela Zona da Mata - Por Aventureiro Local</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <p>© <span id="current-year">2025</span> RN PORTAL DE NOTICIAS. Todos os direitos reservados.</p>
+        <p>Ubá - Minas Gerais | Contato: (32) 3532-7272 | email@rnportal.com.br</p>
+        <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+    </footer>
+
+    <script>
+        // Atualiza a data e ano dinamicamente
+        function setCurrentDate() {
+            const dateElement = document.getElementById('current-date');
+            const yearElement = document.getElementById('current-year');
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            
+            // Forçar o ano para 2025 para a demonstração
+            const displayDate = new Date(2025, now.getMonth(), now.getDate());
+
+            if (dateElement) {
+                dateElement.textContent = displayDate.toLocaleDateString('pt-BR', options);
+            }
+            if (yearElement) {
+                yearElement.textContent = '2025';
+            }
+        }
+        setCurrentDate();
+    </script>
+
+</body>
+</html>
